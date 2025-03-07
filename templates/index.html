@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube to MP3 Converter</title>
+</head>
+<body>
+    <h1>YouTube to MP3 Converter</h1>
+    <form id="url-form">
+        <label for="url">Enter YouTube URL:</label>
+        <input type="text" id="url" name="url" required>
+        <button type="submit">Download and Convert</button>
+    </form>
+    
+    <p id="message"></p>
+
+    <script>
+        document.getElementById('url-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const url = document.getElementById('url').value;
+            const messageElement = document.getElementById('message');
+
+            messageElement.textContent = "Processing... Please wait.";
+
+            const response = await fetch('/download', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: `url=${encodeURIComponent(url)}`
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                messageElement.textContent = result.success;
+            } else if (result.error) {
+                messageElement.textContent = result.error;
+            }
+        });
+    </script>
+</body>
+</html>
