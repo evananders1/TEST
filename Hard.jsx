@@ -16,6 +16,28 @@ export default function MainScreen() {
   const mixedAudioRef = useRef(null);
   const [updateInterval, setUpdateInterval] = useState(null);
 
+  // Add effect states
+  const [effects, setEffects] = useState({
+    chorus: false,
+    phaser: false,
+    compressor: 0,
+    delay: 0,
+    distortion: 0,
+    gain: 1,
+    highpass: 0,
+    lowpass: 0,
+    pitchShift: 0,
+    reverb: 0
+  });
+
+  // Effect change handlers
+  const handleEffectChange = (effect, value) => {
+    setEffects(prev => ({
+      ...prev,
+      [effect]: value
+    }));
+  };
+
   useEffect(() => {
     setVolumes(prev => {
       const newVolumes = [...prev];
@@ -389,7 +411,6 @@ export default function MainScreen() {
       <div className="app-container">
         {/* Sidebar */}
         <div className="sidebar">
-          
           {/* Control Buttons */}
           <div className="control-buttons">
             {/* Upload Button */}
@@ -516,6 +537,153 @@ export default function MainScreen() {
         {/* Main content */}
         <div className="main-content">
           {Main()}
+        </div>
+
+        {/* Effects Panel */}
+        <div className="effects-panel">
+          <h3 className="effects-title">Audio Effects</h3>
+          
+          {/* Switches */}
+          <div className="effects-switches">
+            <div className="effect-switch">
+              <label className="switch">
+                <input
+                  type="checkbox"
+                  checked={effects.chorus}
+                  onChange={(e) => handleEffectChange('chorus', e.target.checked)}
+                />
+                <span className="slider round"></span>
+              </label>
+              <span className="effect-label">Chorus</span>
+            </div>
+            
+            <div className="effect-switch">
+              <label className="switch">
+                <input
+                  type="checkbox"
+                  checked={effects.phaser}
+                  onChange={(e) => handleEffectChange('phaser', e.target.checked)}
+                />
+                <span className="slider round"></span>
+              </label>
+              <span className="effect-label">Phaser</span>
+            </div>
+          </div>
+
+          {/* Sliders */}
+          <div className="effects-sliders">
+            <div className="effect-slider">
+              <span className="effect-label">Compressor</span>
+              <input
+                type="range"
+                min="0"
+                max="1"
+                step="0.01"
+                value={effects.compressor}
+                onChange={(e) => handleEffectChange('compressor', parseFloat(e.target.value))}
+                className="volume-slider"
+              />
+              <span className="volume-value">{Math.round(effects.compressor * 100)}%</span>
+            </div>
+
+            <div className="effect-slider">
+              <span className="effect-label">Delay</span>
+              <input
+                type="range"
+                min="0"
+                max="1"
+                step="0.01"
+                value={effects.delay}
+                onChange={(e) => handleEffectChange('delay', parseFloat(e.target.value))}
+                className="volume-slider"
+              />
+              <span className="volume-value">{Math.round(effects.delay * 100)}%</span>
+            </div>
+
+            <div className="effect-slider">
+              <span className="effect-label">Distortion</span>
+              <input
+                type="range"
+                min="0"
+                max="1"
+                step="0.01"
+                value={effects.distortion}
+                onChange={(e) => handleEffectChange('distortion', parseFloat(e.target.value))}
+                className="volume-slider"
+              />
+              <span className="volume-value">{Math.round(effects.distortion * 100)}%</span>
+            </div>
+
+            <div className="effect-slider">
+              <span className="effect-label">Gain</span>
+              <input
+                type="range"
+                min="0"
+                max="2"
+                step="0.01"
+                value={effects.gain}
+                onChange={(e) => handleEffectChange('gain', parseFloat(e.target.value))}
+                className="volume-slider"
+              />
+              <span className="volume-value">{Math.round(effects.gain * 100)}%</span>
+            </div>
+
+            <div className="effect-slider">
+              <span className="effect-label">Highpass</span>
+              <input
+                type="range"
+                min="0"
+                max="1"
+                step="0.01"
+                value={effects.highpass}
+                onChange={(e) => handleEffectChange('highpass', parseFloat(e.target.value))}
+                className="volume-slider"
+              />
+              <span className="volume-value">{Math.round(effects.highpass * 100)}%</span>
+            </div>
+
+            <div className="effect-slider">
+              <span className="effect-label">Lowpass</span>
+              <input
+                type="range"
+                min="0"
+                max="1"
+                step="0.01"
+                value={effects.lowpass}
+                onChange={(e) => handleEffectChange('lowpass', parseFloat(e.target.value))}
+                className="volume-slider"
+              />
+              <span className="volume-value">{Math.round(effects.lowpass * 100)}%</span>
+            </div>
+
+            <div className="effect-slider">
+              <span className="effect-label">Pitch Shift</span>
+              <input
+                type="range"
+                min="-12"
+                max="12"
+                step="0.1"
+                value={effects.pitchShift}
+                onChange={(e) => handleEffectChange('pitchShift', parseFloat(e.target.value))}
+                className="volume-slider"
+              />
+              <span className="volume-value">{effects.pitchShift.toFixed(1)}</span>
+            </div>
+
+            <div className="effect-slider">
+              <span className="effect-label">Reverb</span>
+              <input
+                type="range"
+                min="0"
+                max="1"
+                step="0.01"
+                value={effects.reverb}
+                onChange={(e) => handleEffectChange('reverb', parseFloat(e.target.value))}
+                className="volume-slider"
+              />
+              <span className="volume-value">{Math.round(effects.reverb * 100)}%</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
