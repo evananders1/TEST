@@ -4,11 +4,17 @@
   padding: 0;
 }
 
-
+.app-container {
+  display: flex;
+  height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: #f5f5f5;
+}
 
 /* Sidebar */
 .sidebar {
-  width: 300px;
+  min-width: 300px;
+  max-width: 300px;
   background-color: #2a2a2a;
   color: white;
   display: flex;
@@ -254,83 +260,6 @@
 }
 
 /* Main content area */
-
-
-/* Mixed audio preview */
-.mix-preview {
-  width: 100%;
-  max-width: 700px;
-}
-
-.preview-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 24px;
-  color: #1a202c;
-}
-
-.preview-player {
-  background-color: white;
-  padding: 24px;
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-}
-
-.audio-player {
-  width: 100%;
-  margin-bottom: 16px;
-}
-
-.download-container {
-  text-align: center;
-}
-
-.download-mix-button {
-  background-color: #10b981;
-  color: white;
-  border: none;
-  padding: 10px 24px;
-  border-radius: 6px;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-.download-mix-button:hover {
-  background-color: #059669;
-}
-/*   */
-.empty-preview {
-  text-align: center;
-  color: #4a5568;
-}
-
-.preview-icon {
-  font-size: 3rem;
-  margin-bottom: 16px;
-}
-
-.preview-message {
-  font-size: 1.5rem;
-  font-weight: 500;
-  margin-bottom: 8px;
-  color: #2d3748;
-}
-
-.preview-instructions {
-  color: #718096;
-}
-
-
-/* --------New Changes to Tabs-------- */
-
-.app-container {
-  display: flex;
-  height: 100vh;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  background-color: #f5f5f5;
-}
-
-/* main content */
 .main-content {
   flex: 1;
   padding: 32px;
@@ -339,6 +268,7 @@
   justify-content: center;
 }
 
+/* Mixed audio preview */
 /* Mix preview in sidebar fixed */
 .mix-preview-sidebar {
   margin-top: 16px;
@@ -367,64 +297,47 @@
   font-size: 0.85rem;
   padding: 8px 0;
 }
-
-/* Tabs styling */
-.tabs {
-  display: flex;
-  justify-content: left; 
-  gap: 24px;
-  padding: 16px; 
-  background-color: #6a6969;
-}
-
-.tabs a {
-  text-decoration: none;
-}
-
-.tabs button {
-  padding: 14px 24px;
-  border-radius: 10px;
-  border: none;
-  font-weight: 600;
-  font-size: 24px;
-  cursor: pointer;
-  min-width: 120px;
+/*   */
+.empty-preview {
   text-align: center;
-  transition: all 0.2s; 
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); 
+  color: #4a5568;
 }
 
-.tabs .home {
-  background-color: #3b82f6;
-  color: white;
+.preview-icon {
+  font-size: 3rem;
+  margin-bottom: 16px;
 }
 
-.tabs .home:hover {
-  background-color: #2563eb;
-  transform: translateY(-2px); 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+.preview-message {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #2d3748;
 }
 
-.tabs .hard {
-  background-color: #8b5cf6;
-  color: white;
+.preview-instructions {
+  color: #718096;
 }
 
-.tabs .hard:hover {
-  background-color: #7c3aed;
-  transform: translateY(-2px); /* lift effect on hover */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
-}
+.tools-container {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  padding: 32px;
+  flex-wrap: wrap;
+}  
 
-/* Audio Effects Panel Styling */
+/* Effects Panel Styling */
 .effects-panel {
-  width: 320px;
-  background-color: #2a2a2a;
-  color: white;
+  width: 100%;
+  background-color: white;
+  color: #2a2a2a;
   display: flex;
   flex-direction: column;
   padding: 16px;
   overflow-y: auto;
+  border-radius: 8px;
+  margin-top: 16px;
 }
 
 .effects-panel::-webkit-scrollbar {
@@ -432,12 +345,12 @@
 }
 
 .effects-panel::-webkit-scrollbar-track {
-  background: #3a3a3a;
+  background: #f5f5f5;
   border-radius: 3px;
 }
 
 .effects-panel::-webkit-scrollbar-thumb {
-  background-color: #666;
+  background-color: #ddd;
   border-radius: 3px;
 }
 
@@ -450,79 +363,11 @@
   border-bottom: 1px solid #3a3a3a;
 }
 
-.effects-switches {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 24px;
-  padding: 0 10px;
-}
-
-.effect-switch {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
 .effect-label {
-  color: #e2e8f0;
+  color: #2a2a2a;
   font-size: 0.9rem;
   font-weight: 500;
-}
-
-/* Switch */
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 44px;
-  height: 24px;
-}
-
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #4a5568;
-  transition: .4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 18px;
-  width: 18px;
-  left: 3px;
-  bottom: 3px;
-  background-color: white;
-  transition: .4s;
-}
-
-input:checked + .slider {
-  background-color: #8b5cf6;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #8b5cf6;
-}
-
-input:checked + .slider:before {
-  transform: translateX(20px);
-}
-
-.slider.round {
-  border-radius: 24px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
+  white-space: nowrap;
 }
 
 /* Slider */
@@ -532,18 +377,24 @@ input:checked + .slider:before {
   gap: 16px;
 }
 
+.effects-sliders-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
 .effect-slider {
   display: flex;
   align-items: center;
   gap: 8px;
   padding: 8px 16px;
-  background: rgba(255, 255, 255, 0.05);
+  background: #f5f5f5;
   border-radius: 6px;
   transition: background 0.3s ease;
 }
 
 .effect-slider:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: #eee;
 }
 
 .effect-slider .effect-label {
@@ -556,7 +407,7 @@ input:checked + .slider:before {
   min-width: 0;
   height: 4px;
   -webkit-appearance: none;
-  background-color: #4a5568;
+  background-color: #ddd;
   border-radius: 2px;
   outline: none;
   margin: 0 4px;
@@ -566,44 +417,260 @@ input:checked + .slider:before {
   -webkit-appearance: none;
   width: 12px;
   height: 12px;
-  background-color: white;
+  background-color: #8b5cf6;
   border-radius: 50%;
   cursor: pointer;
   transition: background 0.3s ease;
 }
 
 .effect-slider input[type="range"]::-webkit-slider-thumb:hover {
-  background-color: #8b5cf6;
+  background-color: #7c3aed;
 }
 
 .effect-slider .volume-value {
-  width: 20px;
+  width: 45px;
   text-align: right;
   font-size: 0.75rem;
-  color: #a0aec0;
+  color: #666;
   font-family: monospace;
   padding-right: 2px;
 }
 
-@media (max-width: 1200px) {
-  .effects-panel {
-    width: 250px;
-  }
+/* Adjust tool-box fit effects panel */
+.tool-box {
+  background-color: white;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  min-width: 600px;
+  max-width: 800px;
+  min-height: 250px;
+  max-height: 600px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.tool-title {
+  color: #1f2937;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 @media (max-width: 768px) {
-  .app-container {
-    flex-direction: column;
+  .tool-box {
+    width: 100%;
+    max-width: none;
+    min-width: auto;
   }
   
   .effects-panel {
-    width: 100%;
-    height: auto;
     max-height: 400px;
   }
-  
-  .effects-switches {
-    flex-direction: row;
-    justify-content: space-around;
+
+  .effects-sliders-grid {
+    grid-template-columns: 1fr;
   }
+}
+
+.tool-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tool-input {
+  padding: 10px 14px;
+  border: 1px solid #d1d5db; 
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+.tool-button {
+  padding: 10px 14px;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.tool-button:hover {
+  background-color: #2563eb;
+}
+
+.tool-button:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.tool-message {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #10b981;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px; /* Adjust this incase it looks different on a different screen size or browser. I noticed it changed on my desktop */
+  margin-top: 20px;
+ min-width: 100%;
+  padding: 16px 0;
+  background-color: #f9fafb;
+  border-bottom: 2px solid #e2e8f0;
+  box-sizing: border-box; /* Include padding/border in element size */
+  overflow: hidden; /* Prevent overflow of tabs */
+}
+
+.tabs button {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  box-sizing: border-box;
+}
+
+.tabs button:hover {
+  background-color: #2563eb;
+  transform: translateY(-2px);
+}
+
+.tabs button:active {
+  transform: translateY(0);
+}
+
+.tab-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  min-height: 300px;
+  box-sizing: border-box;
+  overflow: auto; 
+}
+
+/* Style for individual sliders within the tab */
+.slider-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px 0;
+  min-width: 100%; /* Ensure sliders stay within bounds */
+  
+}
+
+.slider {
+  transform: rotate(-90deg);
+  width: 150px;
+  height: 8px;
+  appearance: none;
+  background: #ddd;
+  border-radius: 5px;
+  outline: none;
+}
+
+/* Effect Toggles */
+.effect-toggles {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 24px;
+  padding: 0 10px;
+}
+
+.effect-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Toggle Switch */
+.toggle {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ddd;
+  transition: .3s;
+  border-radius: 20px;
+}
+
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: .3s;
+  border-radius: 50%;
+}
+
+.toggle input:checked + .toggle-slider {
+  background-color: #8b5cf6;
+}
+
+.toggle input:focus + .toggle-slider {
+  box-shadow: 0 0 1px #8b5cf6;
+}
+
+.toggle input:checked + .toggle-slider:before {
+  transform: translateX(20px);
+}
+
+/* Apply Effects Button */
+.apply-effects-button {
+  margin-top: 24px;
+  padding: 12px 24px;
+  background-color: #8b5cf6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  align-self: center;
+  min-width: 160px;
+}
+
+.apply-effects-button:hover {
+  background-color: #7c3aed;
+  transform: translateY(-1px);
+}
+
+.apply-effects-button:active {
+  transform: translateY(0);
 }
